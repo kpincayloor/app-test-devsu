@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: #f2f4f8;
+  align-items: center;
+}
+
+.header__title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0f265c;
+  display: flex;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.header__title img {
+  width: 1em;
+  height: auto;
+  margin-right: 0.9rem;
+  vertical-align: middle;
+}

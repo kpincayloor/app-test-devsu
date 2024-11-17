@@ -1,27 +1,26 @@
-# AppTestDevsuKevinpincay
+# Proyecto Angular con Pruebas Unitarias
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+Este es un proyecto Angular que incluye componentes, servicios y pruebas unitarias configuradas con Jest.
 
-## Development server
+## Requisitos previos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Node.js v14 o superior
+- npm (incluido con Node.js)
 
-## Code scaffolding
+## Instalación
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clona este repositorio en tu máquina local.
+2. Instala las dependencias ejecutando el siguiente comando:
 
-## Build
+   ```bash
+   npm install
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Instalación
 
-## Running unit tests
+Para ejecutar el proyecto ejecutar:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   npm start
 
-## Running end-to-end tests
+Para las pruebas unitarias ejecutar:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+   npm run test

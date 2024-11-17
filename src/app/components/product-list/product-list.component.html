@@ -1,0 +1,74 @@
+<header-component ></header-component>
+<div class="main-container">
+  <section class="product-list">
+    <div class="product-list__search">
+      <input type="text" class="product-list__search-input" placeholder="Search..." (input)="onSearch($event)">
+      <button class="product-list__button-add" (click)="navigateToAdd()">Agregar</button>
+    </div>
+
+    <div class="product-table__container">
+      <table class="product-table" *ngIf="products.length > 0; else skeleton">
+        <thead>
+          <tr>
+            <th>Logo</th>
+            <th>Nombre del producto</th>
+            <th>
+              Descripción
+              <img src="assets/information.svg" alt="Info Icon" class="column-icon" />
+            </th>
+            <th>
+              Fecha de liberación
+              <img src="assets/information.svg" alt="Info Icon" class="column-icon" />
+            </th>
+            <th>
+              Fecha de reestructuración
+              <img src="assets/information.svg" alt="Info Icon" class="column-icon" />
+            </th>
+            <th class="options-column"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products" class="product-table__row">
+            <td>
+              <img [src]="product.logo" alt="Logo" class="product-table__logo" />
+            </td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.date_release  | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ product.date_revision | date: 'dd/MM/yyyy' }}</td>
+            <td class="dropdown-container">
+              <img src="assets/menu.svg" alt="Menu" class="menu-icon" (click)="toggleDropdown(product.id)" />
+              <ul class="dropdown-menu" *ngIf="dropdownVisible[product.id]">
+                <li (click)="navigateToEdit(product.id)" class="dropdown-item">Editar</li>
+                <li (click)="openModal(product)" class="dropdown-item">Eliminar</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ng-template #skeleton>
+      <div class="skeleton"></div>
+    </ng-template>
+
+    <!-- Modal -->
+    <modal-component
+      *ngIf="showModal"
+      [productTitle]="selectedProduct"
+      (confirmDelete)="deleteProduct()"
+      (cancelDelete)="closeModal()">
+    </modal-component>
+
+    <div class="pagination">
+      <span class="pagination__info">{{ totalResults }} {{ totalResults === 1 ? 'Resultado' : 'Resultados' }}</span>
+      <button class="pagination__button" (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+      <span class="pagination__page-info">Página {{ currentPage }} de {{ totalPages }}</span>
+      <button class="pagination__button" (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+      <select class="pagination__select" (change)="onLimitChange($event)">
+        <option *ngFor="let option of limitOptions" [value]="option">{{ option }}</option>
+      </select>
+    </div>
+  </section>
+  <footer-component></footer-component>
+</div>
